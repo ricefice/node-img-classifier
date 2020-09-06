@@ -1,0 +1,72 @@
+{
+  "name": "img-classifier",
+  "version": "1.0.0",
+  "description": "classify given img based on tensorflowjs image classification models",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.6"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "pretest": "npm run clean && npm run build",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "docker:build": "docker build -t img-classifier .",
+    "docker:run": "docker run -p 3001:3001 -d img-classifier",
+    "migrate": "node ./dist/migrate",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "prestart": "npm run build",
+    "start": "node -r source-map-support/register .",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "ricefice",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/boot": "^2.4.1",
+    "@loopback/core": "^2.9.3",
+    "@loopback/repository": "^2.11.0",
+    "@loopback/rest": "^6.0.0",
+    "@loopback/rest-explorer": "^2.2.8",
+    "@loopback/service-proxy": "^2.3.6",
+    "@tensorflow-models/mobilenet": "^2.0.4",
+    "@types/canvasjs": "^1.9.6",
+    "@types/multer": "^1.4.4",
+    "canvas": "^2.6.1",
+    "express-serve-static-core": "^0.1.1",
+    "multer": "^1.4.2",
+    "tslib": "^2.0.0",
+    "@tensorflow/tfjs-core": "~1.2.11",
+    "@tensorflow/tfjs-converter": "~1.2.11"
+  },
+  "devDependencies": {
+    "@loopback/build": "^6.2.0",
+    "@loopback/eslint-config": "^9.0.0",
+    "@loopback/testlab": "^3.2.2",
+    "@types/node": "^10.17.28",
+    "eslint": "^7.6.0",
+    "jest": "^26.4.2",
+    "should": "^13.2.3",
+    "should-http": "^0.1.1",
+    "sinon": "^9.0.3",
+    "source-map-support": "^0.5.19",
+    "supertest": "^4.0.2",
+    "typescript": "~3.9.7"
+  },
+  "peerDependencies": {}
+}
