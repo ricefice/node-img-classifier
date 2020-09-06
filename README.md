@@ -19,6 +19,11 @@
 | GET    | /classify/{remote_url}/{model}/{version} |         N/A         | `{"success":true,"code":200,"predictions":[{"className":"panda...","probability":0.9995842576026917}], errors: []...}` |
 | POST   |                /classify                 | multipart/form-data |                                                        as above                                                        |
 
+
+## Test
+```npm test```
+
+
 ## Docker
 
 build
